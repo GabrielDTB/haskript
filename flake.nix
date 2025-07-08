@@ -16,6 +16,8 @@
         }
       ) // genAttrs (attrNames hp) (pkg: ghcTree (pkgSet ++ [hp.${pkg}]));
     in
-      { packages = ghcTree []; }
+      {
+        packages = (ghcTree []) // { default = ghcTree []; };
+      }
     );
 }
